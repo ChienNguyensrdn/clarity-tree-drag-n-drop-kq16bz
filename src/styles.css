@@ -1,0 +1,47 @@
+/* Add application styles & imports to this file! */
+@import '~@clr/ui/clr-ui.min.css';
+@import '~@clr/icons/clr-icons.min.css';
+
+.draggable-ghost {
+  border: 1px solid #BBBBBB;
+  border-left: 2px solid #8939AD;
+  border-radius: 3px 0 0 3px !important;
+  background-color: white;
+  box-shadow: 0 3px 4px rgba(116,116,116,0.3) !important;
+  padding: 5px;
+}
+
+.draggable.being-dragged {
+  opacity: 0.4 !important;
+}
+
+.droppable.draggable-match {
+  border: 0;
+}
+.droppable.draggable-over {
+  border: 0;
+}
+
+.draggable-over .drop-location {
+  position: absolute;
+  width: 100%;
+  padding-top: 5px;
+}
+
+.draggable-over .drop-location-cirle {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-left: -10px;
+    border: 4px solid #8939AD;  
+    border-radius: 50%;
+    margin-top: 35px;
+}
+
+.draggable-over .drop-location-line {
+    display: inline-block;
+    border-bottom: 2px solid #8939AD;  
+    margin-bottom: 3px;
+    width: 50%;
+    line-height: 8px;
+}

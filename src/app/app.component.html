@@ -1,0 +1,56 @@
+<div>
+	<button (click)="expandAll()" class="btn btn-primary">All Expanded</button>
+</div>
+Parent Drag/Droppable 
+
+<clr-tree-node *ngFor="let directory of rootDirectory" 
+[clrSelected]="directory.selected" treeDraggable
+[(clrExpanded)]="directory.expanded" [clrDraggable]="directory" clrDroppable 
+ (clrDrop)="onDropBack($event, directory)"
+ (clrDragEnter)="onDragEnter($event, directory)"
+ (clrDragLeave)="onDragLeave($event, directory)">
+	<clr-icon [attr.shape]="directory.icon"></clr-icon>
+	<span>{{directory.name}}</span>
+    <clr-tree-node *ngFor="let file of directory.files">
+        <button class="clr-treenode-link">
+            <clr-icon [attr.shape]="file.icon"></clr-icon>
+            {{file.name}}
+        </button>
+    </clr-tree-node>
+    <clr-draggable-ghost *clrIfDragged>
+        <clr-icon [attr.shape]="directory.icon"></clr-icon>
+        <span>{{directory.name}}</span>
+    </clr-draggable-ghost>
+    <div class="drop-location">
+      <div class="drop-location-cirle"></div>
+      <div class="drop-location-line"></div>
+    </div>
+</clr-tree-node>
+
+<hr>
+
+Parent & Child Drag/Droppable 
+
+<clr-tree-node *ngFor="let directory of rootDirectory" 
+[(clrExpanded)]="directory.expanded"
+[clrDraggable]="directory" clrDroppable
+(clrDragEnter)="onDragEnter($event, directory)"
+ (clrDrop)="onDropBack($event, directory)"
+ >
+	<clr-icon [attr.shape]="directory.icon"></clr-icon>
+	<span>{{directory.name}}</span>
+    <clr-tree-node *ngFor="let file of directory.files" [clrDraggable]="file" clrDroppable>
+        <button class="clr-treenode-link">
+            <clr-icon [attr.shape]="file.icon"></clr-icon>
+            {{file.name}}
+        </button>
+    </clr-tree-node>
+    <clr-draggable-ghost *clrIfDragged>
+        <clr-icon [attr.shape]="directory.icon"></clr-icon>
+        <span>{{directory.name}}</span>
+    </clr-draggable-ghost>
+    <div class="drop-location">
+      <div class="drop-location-cirle"></div>
+      <div class="drop-location-line"></div>
+    </div>
+</clr-tree-node>
